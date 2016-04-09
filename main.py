@@ -46,12 +46,13 @@ while True:
                     frame[y_offset:y_offset + hat_img.shape[0], x_offset:x_offset + hat_img.shape[1], c] = \
                         hat_img[:, :, c] * (hat_img[:, :, 3] / 255.0) + frame[y_offset:y_offset + hat_img.shape[0], x_offset:x_offset + hat_img.shape[1], c] * (1.0 - hat_img[:, :, 3] / 255.0)
             #print 'Faces'
-        else:
+        #else:
             #print 'No faces?'
     # Catch an Attribute error.  This will be thrown if attempting to invoke .any() on
     # an empty list of faces (specific error:  'tuple' object has no attribute 'any')
     except AttributeError:
-        print 'No faces here'
+        #print 'No faces here'
+        pass
 
     # Display the resulting frame
     cv2.imshow('Video', frame)
