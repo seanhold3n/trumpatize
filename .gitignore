@@ -1,2 +1,5 @@
+# Compiled Python files
+*.pyc
+
 # PyCharm config files
 /.idea
