@@ -7,8 +7,7 @@ faceCascade = cv2.CascadeClassifier(cascPath)
 
 # Hat image for placement on heads
 red_maga_hat_img = cv2.imread("img/MAGA_hat_x200.png", -1)
-rmhi_width = 200  # TODO there is probably a way to get these values from the image
-rmhi_height = 144
+
 
 def addhat(frame):
 
@@ -30,9 +29,11 @@ def addhat(frame):
 
                 # Draw MAGA hat
                 hat_img = red_maga_hat_img
+                hat_height = hat_img.shape[0]
+                hat_width = hat_img.shape[1]
                 # Image scale based on face width
-                scale = w*1.0/rmhi_width #TODO get this from hat_img
-                hat_height = int(rmhi_height*scale)
+                scale = w*1.0/hat_width
+                hat_height = int(hat_height*scale)
                 hat_img = cv2.resize(hat_img, (w, hat_height), interpolation=cv2.INTER_AREA)
                 x_offset = x
                 y_offset = max(0, y - hat_height)
