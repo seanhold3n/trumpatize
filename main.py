@@ -8,6 +8,9 @@ faceCascade = cv2.CascadeClassifier(cascPath)
 
 video_capture = cv2.VideoCapture(0)
 
+# Hat image for placement on heads
+hat_img = cv2.imread("img/MAGA_hat_x200.png", -1)
+
 while True:
     # Capture frame-by-frame
     ret, frame = video_capture.read()
@@ -29,13 +32,12 @@ while True:
                 cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
                 # Draw MAGA hat
-                s_img = cv2.imread("img/MAGA_hat_x200.png", -1)
                 x_offset = x
                 y_offset = 0
                 for c in range(0,3):
                     # http://stackoverflow.com/questions/14063070/overlay-a-smaller-image-on-a-larger-image-python-opencv/14102014#14102014
-                    frame[y_offset:y_offset+s_img.shape[0], x_offset:x_offset+s_img.shape[1], c] = \
-                        s_img[:,:,c] * (s_img[:,:,3]/255.0) +  frame[y_offset:y_offset+s_img.shape[0], x_offset:x_offset+s_img.shape[1], c] * (1.0 - s_img[:,:,3]/255.0)
+                    frame[y_offset:y_offset + hat_img.shape[0], x_offset:x_offset + hat_img.shape[1], c] = \
+                        hat_img[:, :, c] * (hat_img[:, :, 3] / 255.0) + frame[y_offset:y_offset + hat_img.shape[0], x_offset:x_offset + hat_img.shape[1], c] * (1.0 - hat_img[:, :, 3] / 255.0)
             print 'Faces'
         else:
             print 'No faces?'
