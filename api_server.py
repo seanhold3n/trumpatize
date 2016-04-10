@@ -8,6 +8,7 @@ from flask import Response
 from flask import request, redirect, url_for
 import cv2
 import trumpatize
+import numpy
 
 app = Flask(__name__)
 
@@ -23,14 +24,21 @@ def api():
         return redirect(url_for('api_about'))
     else:
         # Get image
-        img = cv2.imread("test/img/bern1.jpg", -1)
+        if 'image' in request.files:
+            # Save the image on the server
+            filestore = request.files['image']
 
-        # Trumpatize
-        img = trumpatize.addhat(img)
+            # Read the image
+            img = cv2.imdecode(numpy.asarray(bytearray(filestore.read()), dtype=numpy.uint8), -1)
 
-        # Return
-        [retval, buf] = cv2.imencode(".jpg", img)
-        return Response(buf.tobytes(), mimetype='image/jpg')
+            # Trumpatize
+            img = trumpatize.addhat(img)
+
+            # Return
+            [retval, buf] = cv2.imencode(".jpg", img)
+            return Response(buf.tobytes(), mimetype='image/jpg')
+        else:
+            return Response(status='501')
 
 
 @app.route('/api/about.html')
