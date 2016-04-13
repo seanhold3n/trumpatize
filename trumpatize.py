@@ -56,17 +56,20 @@ def __addhat(frame, hat_type):
                 else:
                     hat_img = red_maga_hat_img
 
-                # Draw MAGA hat
+                # Get hat dimensions
                 hat_height = hat_img.shape[0]
                 hat_width = hat_img.shape[1]
-                # Image scale based on face width
+                
+                # Resize image based on face width
                 scale = w*1.0/hat_width
                 hat_height = int(hat_height*scale)
                 hat_img = cv2.resize(hat_img, (w, hat_height), interpolation=cv2.INTER_AREA)
+
+                # Overlay the hat on the current frame
+                # Courtesy of fireant on StackOverflow (http://stackoverflow.com/a/14102014)
                 x_offset = x
                 y_offset = max(0, y - hat_height)
                 for c in range(0,3):
-                    # http://stackoverflow.com/questions/14063070/overlay-a-smaller-image-on-a-larger-image-python-opencv/14102014#14102014
                     frame[y_offset:y_offset + hat_img.shape[0], x_offset:x_offset + hat_img.shape[1], c] = \
                         hat_img[:, :, c] * (hat_img[:, :, 3] / 255.0) + frame[y_offset:y_offset + hat_img.shape[0], x_offset:x_offset + hat_img.shape[1], c] * (1.0 - hat_img[:, :, 3] / 255.0)
             #print 'Faces'
