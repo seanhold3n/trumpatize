@@ -21,3 +21,25 @@ Trumpatize-me has two parts: the **API** that allows you to upload images to be 
 1. Make sure that OpenCV is installed and that you have a webcam.  (Flask is only used for the API)
 2. Run **main.py**
 3. Enjoy!
+
+#### API server
+1. Make sure that OpenCV and Flask are installed.
+2. Run **api_server.py**.
+3. Congrats!  Your computer is now hosting the API!
+
+The API accepts a POST packet with the following parameters:
+
+| parameter | required? | values            |
+| ---       | ---       | ---               |
+| image     | yes       | (your image)      |
+| hat_type  | no        | red, white, camo  |
+
+A sample curl request is as follows:
+```bash
+curl -o bernie_with_hat.jpg \
+    -F hat_type=red \
+    -F image=@bernie.jpg \
+    http://trumpatize.me/api/
+```
+
+When the API server runs on your computer, the default port used by Flask is 5000.  Thus, to test the API locally, the url would be *http://localhost:5000/api/*
