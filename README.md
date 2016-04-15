@@ -6,12 +6,11 @@ Trumpatize-me is written in Python 2.7 with the help of the following packages:
 * **OpenCV** for image processing tasks
 * **Flask** for handling API calls
 
-On Linux, you may install these using the following commands:
+On Ubuntu/Debian Linux, you may install these using the following commands:
 ```bash
 sudo apt-get install python-opencv
 sudo pip install Flask
 ```
-*Note that apt is the package manager for Debian/Ubuntu Linux.*
 
 
 ## Usage
@@ -41,5 +40,7 @@ curl -o bernie_with_hat.jpg \
     -F image=@bernie.jpg \
     http://trumpatize.me/api/
 ```
+
+NOTE: http://trumpatize.me site does not currently have API support. (coming soon!) 
 
 When the API server runs on your computer, the default port used by Flask is 5000.  Thus, to test the API locally, the url would be *http://localhost:5000/api/*
