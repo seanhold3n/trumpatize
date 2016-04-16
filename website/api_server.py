@@ -5,7 +5,7 @@
 
 from flask import Flask
 from flask import Response
-from flask import request, redirect, url_for
+from flask import request, redirect, url_for, render_template
 import cv2
 import trumpatize
 import numpy
@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Hello, world!\n'
+    return render_template('index.html')
 
 
 @app.route('/api/', methods=['GET', 'POST'])
