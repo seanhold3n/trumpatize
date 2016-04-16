@@ -6,10 +6,9 @@ Trumpatize-me is written in Python 2.7 with the help of the following packages:
 * **OpenCV** for image processing tasks
 * **Flask** for handling API calls
 
-On Ubuntu/Debian Linux, you may install these using the following commands:
+If you have PIP installed, you may add these using the following command:
 ```bash
-sudo apt-get install python-opencv
-sudo pip install Flask
+pip install -r requirements.txt
 ```
 
 
