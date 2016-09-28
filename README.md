@@ -8,8 +8,8 @@ Trumpatize-me is written in Python 2.7 with the help of the following packages:
 
 On Ubuntu/Debian Linux, you may install these using the following commands:
 ```bash
+sudo pip install -r requirements.txt
 sudo apt-get install python-opencv
-sudo pip install Flask
 ```
 
 
