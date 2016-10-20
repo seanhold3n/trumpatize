@@ -50,9 +50,9 @@ def __addhat(frame, hat_type):
                 elif hat_type == WHITEHAT:
                     hat_img = white_maga_hat_img
                 elif hat_type == CAMOHAT:
-                    hat_type == camo_maga_hat_img
+                    hat_type = camo_maga_hat_img
                 elif hat_type == HAIR:
-                    hat_type == hair_img
+                    hat_type = hair_img
                 else:
                     hat_img = red_maga_hat_img
 

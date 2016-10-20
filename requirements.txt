@@ -1,2 +1,2 @@
 Flask
-cv2
+numpy
