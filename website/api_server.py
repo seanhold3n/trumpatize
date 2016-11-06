@@ -7,6 +7,7 @@ from flask import Flask
 from flask import Response
 from flask import request, redirect, url_for, render_template
 import cv2
+import os
 import trumpatize
 import numpy
 
@@ -47,4 +48,5 @@ def api_about():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
